@@ -2,17 +2,21 @@ package com.example.poshell.db;
 
 import com.example.poshell.model.Cart;
 import com.example.poshell.model.Product;
+import com.example.poshell.model.Purchase;
 
 import java.util.List;
 
 public interface PosDB {
 
-    public List<Product> getProducts();
-
-    public Cart saveCart(Cart cart);
-
-    public Cart getCart();
-
-    public Product getProduct(String productId);
-
+    List<Product> getProducts();
+    Cart getCart(int uid);
+    Product getProduct(int productId);
+    boolean login(int uid, String password);
+    void delItem(int uid, int pid);
+    void addItem(int uid, int pid, int amount);
+    void buy(int uid, int pid, int amount);
+    void declineAccount(int uid, double amount);
+    Double getAccount(int uid);
+    void pay(int uid, double amount);
+    List<Purchase>getPurchase();
 }

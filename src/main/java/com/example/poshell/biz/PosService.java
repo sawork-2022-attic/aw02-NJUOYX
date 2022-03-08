@@ -2,22 +2,19 @@ package com.example.poshell.biz;
 
 import com.example.poshell.model.Cart;
 import com.example.poshell.model.Product;
+import com.example.poshell.model.Purchase;
 
 import java.util.List;
 
 public interface PosService {
-    public Cart getCart();
-
-    public Cart newCart();
-
-    public void checkout(Cart cart);
-
-    public void total(Cart cart);
-
-    public boolean add(Product product, int amount);
-
-    public boolean add(String productId, int amount);
-
-
-    public List<Product> products();
+    Cart getCart();
+    boolean add(int productId, int amount);
+    List<Product> products();
+    boolean login(int uid, String password);
+    void buy(int index);
+    void buyAll();
+    Integer getUid();
+    Double getAccount();
+    void pay(int amount);
+    List<Purchase>getPurchase();
 }

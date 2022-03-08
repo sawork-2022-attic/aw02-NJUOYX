@@ -1,37 +1,7 @@
-# POS in Shell
+# Report
 
-The demo shows a simple POS system with command line interface. Currently it implements three commands which you can see using the `help` command.
+分层设计是构建大型软件系统的一个基本方法。在这次作业中，使用spring提供的系统框架，我能够很快的完成一个简单但功能却较为全面的posShell。
 
-```shell
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
- :: Spring Boot ::                (v2.5.7)
- 
-shell:>help
-AVAILABLE COMMANDS
-
-Built-In Commands
-        clear: Clear the shell screen.
-        exit, quit: Exit the shell.
-        help: Display help about available commands.
-        history: Display or save the history of previously run commands
-        script: Read and execute commands from a file.
-        stacktrace: Display the full stacktrace of the last error.
-
-Pos Command
-        a: Add a Product to Cart
-        n: New Cart
-        p: List Products
-```
-
-Everytime a customer come to make a purchase, use `n` to create a new cart and then use `a ${productid} ${amount}` to add a product to the cart.
-
-Please make the POS system robust and fully functional by implementing more commands, for instance, print/empty/modify cart.
-
-Implementing a PosDB with real database is very much welcome. 
-
-Please elaborate your understanding in layered systems via this homework in your README.md.
+PosShell主要分为命令层、服务层、数据库层。分层设计的精髓在于抽象，在这里，数据库层给服务层提供了数据抽象，保证了数据的增删查改都能通过它提供
+的API完成；服务层为命令层提供了服务抽象，使得服务层需要的对posShell所操纵的商品对象的访问和修改可以通过服务层提供的几个API实现。API提供了各
+个软件层所需的抽象，使得仅在单个软件层里，不需要考虑本软件层之外的东西，从而实现了软件层的高效开发同时又避免了过度耦合。

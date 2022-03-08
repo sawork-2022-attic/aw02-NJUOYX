@@ -6,13 +6,19 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class Product {
-    private String id;
+    private int pid;
     private String name;
     private double price;
 
+    public Product(){
+        this.pid = -1;
+        name = "";
+        price = 0.0;
+    }
+
     @Override
     public String toString() {
-        return getId() + "\t" + getName() + "\t" + getPrice();
+        return getPid() + "\t" + getName() + "\t" + getPrice();
     }
 
 }

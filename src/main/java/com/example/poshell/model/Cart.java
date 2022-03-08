@@ -3,6 +3,7 @@ package com.example.poshell.model;
 import lombok.Data;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Data
@@ -12,6 +13,10 @@ public class Cart {
 
     public boolean addItem(Item item) {
         return items.add(item);
+    }
+
+    public boolean addItems(Collection<Item> items){
+        return this.items.addAll(items);
     }
 
     @Override
